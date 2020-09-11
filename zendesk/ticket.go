@@ -47,6 +47,11 @@ func (cf *CustomField) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+type TicketRequester struct {
+	Name string `json:"name,omitempty"`
+	Email string `json:"email,omitempty"`
+}
+
 type Ticket struct {
 	ID              int64         `json:"id,omitempty"`
 	URL             string        `json:"url,omitempty"`
@@ -59,10 +64,7 @@ type Ticket struct {
 	Status          string        `json:"status,omitempty"`
 	Recipient       string        `json:"recipient,omitempty"`
 	RequesterID     int64         `json:"requester_id,omitempty"`
-	Requester struct {
-		Name string `json:"name,omitempty"`
-		Email string `json:"email,omitempty"`
-	} `json:"requester,omitempty"`
+	Requester 		TicketRequester  `json:"requester,omitempty"`
 	SubmitterID     int64         `json:"submitter_id,omitempty"`
 	AssigneeID      int64         `json:"assignee_id,omitempty"`
 	OrganizationID  int64         `json:"organization_id,omitempty"`
